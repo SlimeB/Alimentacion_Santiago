@@ -5,21 +5,31 @@
 {% endblock title %}
 
 {% block content %}
-    <div id="imagen" style="width: 200px; height: 200px; background-color: blue;">
-        imagen
-    </div>
-    <div id="detalles">
-        <h2 id="titulo">
-            pasta
-        </h2>
-        <p id="ingredientes">
-            ingredientes
-        </p>
-        <p id="restaurante">
-            restaurante
-        </p>
-    </div>
-    <button id="comprar">
-        comprar
-    </button>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <th>
+                <div id="imagen" style="width: 200px; height: 200px; background-color: blue;">
+                    imagen
+                </div>
+            </th>
+            <th style="width: 800px; text-align: left; vertical-align: top; padding-left: 30px;">
+                <div id="detalles">
+                    <h2 id="titulo">
+                        patata
+                    </h2>
+                    <p id="ingredientes">
+                        ingredientes
+                    </p>
+                    <p id="restaurante">
+                        restaurante
+                    </p>
+                </div>
+            </th>
+            <th>
+                <button id="comprar" style="height: 200 px; width: 100px;">
+                    comprar
+                </button>
+            </th>
+        </tr>
+    </table>
 {% endblock content %}
