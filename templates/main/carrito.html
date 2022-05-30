@@ -1,8 +1,8 @@
 {% extends 'index.html' %}
 
 {% block title %}
-    Home - Alimentacion Santiago
-{% endblock title %}
+    Carrito - Alimentacion Santiago
+{% endblock %}
 
 {% block content %}
     <table cell style="margin-left: auto; margin-right: auto; border-spacing: 50px;">
@@ -16,22 +16,19 @@
                 <th style="width: 800px; text-align: left; vertical-align: top; padding-left: 30px;">
                     <div id="detalles">
                         <h2 id="titulo">
-                            patata
+                            {{i.titulo}}
                         </h2>
                         <p id="ingredientes">
-                            ingredientes
+                            {{i.ingre}}
                         </p>
                         <p id="restaurante">
-                            restaurante
+                            {{i.rest}}
                         </p>
                     </div>
-                </th>
-                <th>
-                    <button id="comprar" style="height: 200 px; width: 100px;">
-                        comprar
-                    </button>
                 </th>
             </tr>
         {% endfor %}
     </table>
+
+    <button>enviar pedido</button>
 {% endblock content %}
