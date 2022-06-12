@@ -11,7 +11,7 @@
         }
     </script>
     <table cell style="margin-left: auto; margin-right: auto; border-spacing: 50px;">
-        {% for i in n %}
+        {% for i in p %}
             <tr >
                 <th>
                     <div id="imagen" style="width: 200px; height: 200px; background-color: blue;">
@@ -21,20 +21,26 @@
                 <th style="width: 800px; text-align: left; vertical-align: top; padding-left: 30px;">
                     <div id="detalles">
                         <h2 id="titulo">
-                            patata
+                            {{i.nombre_producto}}
                         </h2>
                         <p id="ingredientes">
-                            ingredientes
+                            {{i.descripcion_producto}}
+                            {% if i.disponible == False %}
+                                <p style="font-weight: bold;">Producto no disponible</p>
+                            {% endif %}
                         </p>
                         <p id="restaurante">
-                            restaurante
+                            {{i.restaurante_producto}}
                         </p>
                     </div>
                 </th>
                 <th>
-                    <button id="comprar" style="height: 200 px; width: 100px;" onclick="funcion()">
-                        comprar
-                    </button>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <button name="boton" value="{{i}}" type="submit" style="height: 200 px; width: 100px;" onclick="alert('producto agregado al carrito')">
+                            comprar
+                        </button>
+                    </form>
                 </th>
             </tr>
         {% endfor %}

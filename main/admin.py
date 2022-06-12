@@ -5,3 +5,5 @@ from .models import *
 # Register your models here.
 
 admin.site.register(categoria_usuario)
+admin.site.register(restaurante)
+admin.site.register(producto)

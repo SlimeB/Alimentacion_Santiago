@@ -16,15 +16,18 @@
                 <th style="width: 800px; text-align: left; vertical-align: top; padding-left: 30px;">
                     <div id="detalles">
                         <h2 id="titulo">
-                            {{i.titulo}}
+                            {{i.nombre_producto}}
                         </h2>
                         <p id="ingredientes">
-                            {{i.ingre}}
-                        </p>
-                        <p id="restaurante">
-                            {{i.rest}}
+                            {{i.descripcion_producto}}
                         </p>
                     </div>
+                </th>
+                <th>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <button name="borrar" value="{{i.id}}" type="submit">eliminar</button>
+                    </form>
                 </th>
             </tr>
         {% endfor %}

@@ -1,16 +1,25 @@
 from django.shortcuts import render
+from .models import producto
 
 # Create your views here.
+carritoPedido = list()
+
 def home(request):
-    n = range(6)
-    return render(request, 'home.html', {"n": n})
+    p = producto.objects.all()
+    
+    if request.method == "POST":
+        pr = producto.objects.filter(nombre_producto = request.POST["boton"]).values()[0]
+        carritoPedido.append(pr)
+    return render(request, 'home.html', {"p": p})
 
 def carrito(request):
-    n = [
-        {"titulo": "patata", "ingre": "papas, aceite y sal", "rest": "el emporio de las papas"},
-        {"titulo": "cebolla caramelizada", "ingre": "cebolla, aceite y azucar", "rest": "mc cebolla"},
-    ]
+    n = carritoPedido
 
+    if request.method == "POST":
+        for i in carritoPedido:
+            if i["id"] == int(request.POST["borrar"]):
+                carritoPedido.remove(i)
+                break
     return render(request, "carrito.html", {"n": n})
 
 def pedido(request):
