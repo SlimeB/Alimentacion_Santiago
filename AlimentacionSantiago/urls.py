@@ -22,5 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('car/', views.carrito, name="carrito"),
-    path('pedido/', views.pedido, name="pedido")
+    path('pedido/', views.pedido, name="pedido"),
+    path('registro_restaurante/', views.registro_restaurante, name="registro_restaurante"),
+    path('registro_receta/', views.registro_receta, name="registro_receta"),
+    path('usuario/', views.usuario, name="usuario"),
 ]

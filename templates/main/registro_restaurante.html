@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    registro_restaurante - Alimentacion Santiago
+{% endblock %}
+
+{% block content %}
+    <div style="text-align: center;">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{r}}
+            <button type="submit">guardar</button>
+        </form>
+        <table>
+            <tr>
+                <thead>
+                    <th>
+                        id
+                    </th>
+                    <th>
+                        nombre del restaurante
+                    </th>
+                </thead>
+                <tbody>
+                    {% for i in re%}
+                        <tr>
+                            <th>
+                                {{i.id}}
+                            </th>
+                            <th>
+                                {{i.nombre_restaurante}}
+                            </th>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </tr>
+        </table>
+    </div>
+{% endblock %}
