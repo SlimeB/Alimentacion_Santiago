@@ -12,41 +12,41 @@
             <button type="submit">guardar</button>
         </form>
         <table>
-            <tr>
-                <thead>
-                    <th>
-                        nombre de la receta
-                    </th>
-                    <th>
-                        descripcion receta
-                    </th>
-                    <th>
-                        disponible
-                    </th>
-                </thead>
-                <tbody>
+            <thead>
+                <th>
+                    nombre de la receta
+                </th>
+                <th>
+                    descripcion receta
+                </th>
+                <th>
+                    disponible
+                </th>
+            </thead>
+            <tbody>
+                <form action="" method="POST">
                     {% for i in p %}
-                        <tr>
-                            <th>
-                                {{i.nombre_producto}}
-                            </th>
-                            <th>
-                                {{i.descripcion_producto}}
-                            </th>
-                            <th>
-                                <form action="" method="post"></form>
-                                    {% if i.disponible == True %}
-                                        <input type="checkbox" checked name="disponibilidad" value="{{i.id}}">
-                                    {% else %}
-                                        <input type="checkbox" name="disponibilidad" value="{{i.id}}">
-                                    {% endif %}
-                                    <button type="submit">guardar cambios</button>
-                                </form>
-                            </th>
-                        </tr>
+                        {% if i.restaurante_producto.nombre_restaurante == "papamania" %}
+                            <tr>
+                                <th>
+                                    {{i.nombre_producto}}
+                                </th>
+                                <th>
+                                    {{i.descripcion_producto}}
+                                </th>
+                                <th>
+                                        {% if i.disponible == True %}
+                                            <input type="checkbox" checked name="disponibilidad" value="{{i.id}}">
+                                        {% else %}
+                                            <input type="checkbox" name="disponibilidad" value="{{i.id}}">
+                                        {% endif %}
+                                </th>
+                            </tr>
+                        {% endif %}
                     {% endfor %}
-                </tbody>
-            </tr>
+                    <button type="submit">guardar cambios</button>
+                </form>
+            </tbody>
         </table>
     </div>
 {% endblock %}

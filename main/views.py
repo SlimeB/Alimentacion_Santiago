@@ -31,11 +31,33 @@ def pedido(request):
     return render(request, "pedido.html")
 
 def registro_restaurante(request):
-    r = registroRestaurante()
     re = restaurante.objects.all()
+
+    if request.method == "POST":
+        print(request.POST.get)
+        r = registroRestaurante(request.POST)
+        if r.is_valid():
+            n = r.cleaned_data["nombre_restaurante"]
+            res = restaurante(nombre_restaurante = n)
+            res.save()
+    else:
+        r = registroRestaurante()
     return render(request, "registro_restaurante.html", {"r": r, "re": re})
 
 def registro_receta(request):
-    r = registroReceta
     p = producto.objects.all()
+
+    if request.method == "POST":
+        r = registroReceta(request.POST)
+        if r.is_valid():
+            n = r.cleaned_data["nombre_receta"]
+            de = r.cleaned_data["descripcion_producto"]
+            di = r.cleaned_data["disponible"]
+            pr = producto(nombre_producto= n, descripcion_producto= de, restaurante_producto= restaurante.objects.filter(nombre_restaurante = "papamania")[0], disponible= di)
+            pr.save()
+    else:
+        r = registroReceta()
     return render(request, "registro_receta.html", {"r": r, "p": p})
+
+def nosotros(request):
+    return render(request, "nosotros.html", {})
